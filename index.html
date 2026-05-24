@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f766e" />
+    <title>Trans 번역기</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <img src="icons/icon.svg" alt="" class="brand-mark" />
+          <div>
+            <p class="eyebrow">Trans</p>
+            <h1>텍스트 번역기</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-button" id="installButton" type="button" title="앱 설치" hidden>
+            <span aria-hidden="true">+</span>
+            <span class="sr-only">앱 설치</span>
+          </button>
+          <button class="icon-button" id="clearAllButton" type="button" title="전체 지우기">
+            <span aria-hidden="true">×</span>
+            <span class="sr-only">전체 지우기</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="translator" aria-label="번역기">
+          <div class="language-bar">
+            <label class="field">
+              <span>원문</span>
+              <select id="sourceLanguage" aria-label="원문 언어"></select>
+            </label>
+            <button class="swap-button" id="swapButton" type="button" title="언어 바꾸기">
+              <span aria-hidden="true">⇄</span>
+              <span class="sr-only">언어 바꾸기</span>
+            </button>
+            <label class="field">
+              <span>번역</span>
+              <select id="targetLanguage" aria-label="번역 언어"></select>
+            </label>
+          </div>
+
+          <div class="editor-grid">
+            <label class="text-panel">
+              <span class="panel-label">입력</span>
+              <textarea id="sourceText" maxlength="12000" placeholder="번역할 텍스트를 입력하세요"></textarea>
+              <span class="counter" id="sourceCounter">0 / 12000</span>
+            </label>
+
+            <label class="text-panel">
+              <span class="panel-label">결과</span>
+              <textarea id="resultText" readonly placeholder="번역 결과가 여기에 표시됩니다"></textarea>
+              <span class="counter" id="resultCounter">0</span>
+            </label>
+          </div>
+
+          <div class="action-bar">
+            <button class="primary-button" id="translateButton" type="button">번역하기</button>
+            <button class="secondary-button" id="copyButton" type="button" disabled>복사</button>
+            <button class="secondary-button" id="saveButton" type="button" disabled>TXT 저장</button>
+          </div>
+
+          <p class="status" id="statusText" role="status" aria-live="polite">대기 중</p>
+        </section>
+
+        <aside class="history" aria-label="최근 번역 기록">
+          <div class="section-heading">
+            <h2>최근 기록</h2>
+            <button class="text-button" id="clearHistoryButton" type="button">비우기</button>
+          </div>
+          <div class="history-list" id="historyList">
+            <p class="empty-state">저장된 번역이 없습니다</p>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
